@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>life long va ma ?</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #fff0f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      text-align: center;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      color: #d6336c;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      background-color: #ff4d6d;
+      color: white;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      color: red;
+      animation: float 5s infinite;
+      font-size: 20px;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hearts"></div>
+
+<div class="card" id="card">
+  <h1 id="question">suba en kuda vey irupiya life long as my wife  ?</h1>
+  <div id="buttons">
+    <button class="btn" onclick="showLove()">Yes</button>
+    <button class="btn" id="noBtn" onclick="nextStep()">Poda</button>
+  </div>
+</div>
+
+<script>
+  const noTexts = [
+    "Yes Solrii Venna",
+    "Mudiyathu Poda",
+    "Yess tha unnaku last option"
+  ];
+  let step = 0;
+
+  function nextStep() {
+    if (step < noTexts.length) {
+      document.getElementById("noBtn").innerText = noTexts[step];
+      step++;
+    } else {
+      document.getElementById("buttons").innerHTML = '<button class="btn" onclick="showLove()">Yess tha unnaku last option</button>';
+    }
+  }
+
+  function showLove() {
+    document.getElementById("card").innerHTML = `
+      <h1> suba-Yay!! lets start our love from the scratch da suriya ❤️ <br><br>
+        
+        
+        suriya- hey jolly yen thango enaku ok solita i am the happiest person in the world </h1>
+    `;
+  }
+
+  // Create floating hearts
+  const heartsContainer = document.querySelector('.hearts');
+  for (let i = 0; i < 30; i++) {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (2 + Math.random() * 3) + 's';
+    heart.innerHTML = '❤️';
+    heartsContainer.appendChild(heart);
+  }
+</script>
+
+</body>
+</html>
